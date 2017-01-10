@@ -51,6 +51,10 @@ public class BusTest{
     assertEquals(0, bus.passCount());
   }
 
+  @public void canChargePassengers(){
+    
+  }
+
   ///////////////////////////////////////////////////////////////////////////////
   @Test
   public void busStopHasName(){
