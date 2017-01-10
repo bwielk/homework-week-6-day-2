@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Bus{
-  
+
   private int number;
   private ArrayList<Passenger> passengers;
   private String destination;
@@ -36,5 +36,12 @@ class Bus{
 
   public void dropOff(){
     passengers.clear();
+  }
+
+  public Passenger throwOut(int index){
+    if(passCount() > 0){
+      return passengers.remove(index);
+    }
+    return null;
   }
 }

@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import org.junit.*;
 
 public class BusTest{
@@ -54,6 +54,33 @@ public class BusTest{
     bus.dropOff();
     assertEquals(0, bus.passCount());
   }
+
+  @Test 
+  public void acceptsPetsAndChildren(){
+    bus.pickUp(pet);
+    bus.pickUp(child);
+    assertEquals(2, bus.passCount());
+  }
+
+  @Test 
+  public void canThrowOutADrunkPassenger(){
+    bus.pickUp(adult);
+    Passenger irritator = bus.throwOut(0);
+    Adult original = (Adult) irritator;
+    assertNotNull(irritator);
+    assertEquals("Good afternoon, Sir!", original.adultGreet());
+  }
+
+  @Test
+  public void canThrowOutANoistKid(){
+    bus.pickUp(adult);
+    bus.pickUp(child);
+    Passenger noisyBoy = bus.throwOut(1);
+    Child original = (Child) noisyBoy;
+    assertNotNull(noisyBoy);
+    assertEquals("Heeeyaaaa!", original.childGreet());
+  }
+
   //////////////////////////////////VALIDATOR////////////////////////////////////////
   @Test
   public void canChargePassengers(){
