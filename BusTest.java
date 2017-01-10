@@ -3,14 +3,20 @@ import org.junit.*;
 
 public class BusTest{
   Bus bus;
-  Person person;
+  Adult adult;
   BusStop stop;
+  Pet pet;
+  Child child;
+  Validator validator;
 
   @Before
   public void before() {
     bus = new Bus(10, "Bonaly", 30);
-    person = new Person();
+    adult = new Adult(3);
     stop = new BusStop("Heaven");
+    pet = new Pet(1);
+    child = new Child(2);
+    validator = new Validator();
   }
 
   @Test 
@@ -31,31 +37,33 @@ public class BusTest{
   @Test 
   public void theBusIsFull(){
     for(int i=0; i<bus.limit; i+=1){ //makes the array FULL!
-      bus.pickUp(person);
+      bus.pickUp(adult);
     }
     assertEquals(true, bus.theBusIsFull());
   }
 
   @Test 
   public void passengerCanGetIn(){
-    Person person = new Person();
-    bus.pickUp(person);
+    bus.pickUp(adult);
     assertEquals(1, bus.passCount());
   }
 
   @Test
   public void passengerGetsOff(){
-    Person person = new Person();
-    bus.pickUp(person);
+    bus.pickUp(adult);
     bus.dropOff();
     assertEquals(0, bus.passCount());
   }
-
-  @public void canChargePassengers(){
-    
+  //////////////////////////////////VALIDATOR////////////////////////////////////////
+  @Test
+  public void canChargePassengers(){
+    validator.chargePassengers(adult);
+    validator.chargePassengers(pet);
+    validator.chargePassengers(child);
+    assertEquals(6, validator.cashUp());
   }
 
-  ///////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////BUS_STOP///////////////////////////////////
   @Test
   public void busStopHasName(){
     assertEquals("Heaven", stop.getName());
@@ -63,7 +71,7 @@ public class BusTest{
 
   @Test
   public void canAddToQueue(){
-    stop.add(person);
+    stop.add(adult);
     assertEquals(1, stop.personCount());
   }
 

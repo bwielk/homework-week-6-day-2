@@ -2,11 +2,11 @@ import java.util.*;
 
 class BusStop{
   private String name;
-  private ArrayList<Person> queue;
+  private ArrayList<Passenger> queue;
 
   public BusStop(String name){
     this.name = name;
-    this.queue = new ArrayList<Person>();
+    this.queue = new ArrayList<Passenger>();
   }
 
   public String getName(){
@@ -21,7 +21,7 @@ class BusStop{
   //   return personCount() == queue.length;
   // }
 
-  public void add(Person person){
-    queue.add(person);
+  public void add(Passenger passenger){
+    queue.add(passenger);
   }
 }

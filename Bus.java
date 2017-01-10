@@ -1,15 +1,16 @@
 import java.util.*;
 
 class Bus{
+  
   private int number;
-  private ArrayList<Person> passengers;
+  private ArrayList<Passenger> passengers;
   private String destination;
   public int limit;
 
   public Bus(int number, String destination, int limit){
     this.number = number;
     this.destination = destination;
-    this.passengers = new ArrayList<Person>();
+    this.passengers = new ArrayList<Passenger>();
     this.limit = limit;
   }
 
@@ -29,7 +30,7 @@ class Bus{
     return passCount() == this.limit;//checks if the buss is full
   }
 
-  public void pickUp(Person person){
+  public void pickUp(Passenger person){
     passengers.add(person);
   }
 
